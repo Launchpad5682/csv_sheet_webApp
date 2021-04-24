@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<style>
+
+  body{ background: skyblue;  }
+  
+  .fixed_header{
+      width: 80%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      overflow-x: scroll; 
+      overflow-y:scroll ;
+      margin: auto;
+      margin-top: 100px;
+      table-layout: fixed;
+  }
+
+  .fixed_header tbody{
+    display:block;
+    width: 100%;
+    overflow: auto;
+    height: 700px;
+    padding: 12px;
+  }
+
+  .fixed_header thead tr {
+    display: block;
+  }
+
+  .fixed_header thead {
+    font-size: small;
+    background: black;
+    color:#fff;
+    white-space: nowrap;
+  }
+
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+    width: 200px;
+  }
+
+  .button-container{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-around;
+  }
+
+  button{
+    color: blue;
+  }
+</style>
+
+  <body>
+      <table class="fixed_header">
+        <!--
+        <thead>
+          <tr>
+            {% for value in columnsList %} {% for item in value %}
+            <th>{{ item }}</th>
+            {% endfor %} {% endfor %}
+          </tr>
+        </thead>
+      -->
+        <tbody>
+          {% for value in dataList %}
+          <tr>
+            {% for item in value %}
+            <td>{{ item }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="button-container">
+        <button formmethod="POST">"Add Column"</button>
+        <button>"Add Row"</button>
+        <button ><a href="/edit">Save</a></button> 
+        <form action="/data" method="POST">
+          Name: <input name="name" /> <br />
+          <input type="submit" value="Save" />
+        </form>      
+      </div>
+  </body>
+</html>
+
+
